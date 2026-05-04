@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIA Atlas â Global Budget Impact Analysis Observatory</title>
+<title>BIA Atlas &#8212; Global Budget Impact Analysis Observatory</title>
 <meta name="description" content="Explore, compare, and benchmark budget impact analyses across HTA agencies worldwide. Open data for transparent decision-making.">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
@@ -115,18 +115,18 @@ footer div+div{margin-top:4px;font-size:11px}
   <!-- RESULTS -->
   <div class="results-meta"><span id="result-count"></span><span>Click to view details</span></div>
   <div class="grid" id="grid"></div>
-  <div class="empty hidden" id="empty"><div class="empty-icon">ð</div><div class="empty-title">No BIAs found</div><div style="font-size:13px;margin-top:8px">Try adjusting your search or filters</div></div>
+  <div class="empty hidden" id="empty"><div class="empty-icon">&#128269;</div><div class="empty-title">No BIAs found</div><div style="font-size:13px;margin-top:8px">Try adjusting your search or filters</div></div>
 
   <!-- CTA -->
   <div class="cta" id="contribute">
     <h2>Contribute a BIA</h2>
     <p>Have a published or submitted budget impact analysis? Add it to the Atlas via GitHub and help build the world's most comprehensive BIA database.</p>
-    <a href="https://github.com/sevincelifalkan-coder/bia-atlas" target="_blank"><button class="cta-btn">Contribute on GitHub â</button></a>
+    <a href="https://github.com/sevincelifalkan-coder/bia-atlas" target="_blank"><button class="cta-btn">Contribute on GitHub &#8594;</button></a>
   </div>
 
   <footer>
-    <div>BIA Atlas Â· Built by SevinÃ§ Elif Åen Â· Open data for transparent HTA decision-making</div>
-    <div>Data sourced from published HTA reports, academic publications, and preprints Â· CC BY 4.0</div>
+    <div>BIA Atlas &#183; Built by Sevin&#231; Elif &#350;en &#183; Open data for transparent HTA decision-making</div>
+    <div>Data sourced from published HTA reports, academic publications, and preprints &#183; CC BY 4.0</div>
   </footer>
 </div>
 
@@ -137,19 +137,19 @@ footer div+div{margin-top:4px;font-size:11px}
 
 <script>
 // ============================================================
-// BIA ATLAS DATA â VERIFIED ENTRIES ONLY
+// BIA ATLAS DATA &#8212; VERIFIED ENTRIES ONLY
 // ============================================================
 const DB=[
-{id:1,verification:"verified",drug:"Lecanemab",brand:"Leqembi",disease:"Alzheimer's Disease",therapeuticArea:"Neurology",country:"Ireland",agency:"NCPE",year:2026,perspective:"HSE Payer",eligiblePop:9833,eligiblePopMethod:"Prevalence-based, EU ApoE Îµ4 restriction applied (15% homozygote exclusion)",timeHorizon:5,uptakeY1:2,uptakeY3:5,uptakeY5:8,drugCostPerPatient:22000,diagnosticCost:1800,monitoringCostY1:9050,monitoringCostY2:7950,totalPerPatientY1:32850,totalPerPatientY2:29950,annualBudgetY1:6.5,annualBudgetY5:24.1,cumulativeBudget:75.9,budgetPct:0.05,drugCostShare:67,topSensParam:"Drug price",methodology:"ISPOR BIA Good Practice (Sullivan et al. 2014)",modelType:"Cost calculator",decision:"Under review",source:"Åen SE. PharmacoEconomics (submitted 2026)",sourceUrl:"https://doi.org/10.64898/2025.12.30.25343198",currency:"EUR",notes:"First Ireland-specific BIA for AD DMTs. Incorporates EU ApoE Îµ4 restriction, blood-based biomarker scenarios, and 2026 HSE budget (â¬29B). Base case uptake scenario shown."},
+{id:1,verification:"verified",drug:"Lecanemab",brand:"Leqembi",disease:"Alzheimer's Disease",therapeuticArea:"Neurology",country:"Ireland",agency:"NCPE",year:2026,perspective:"HSE Payer",eligiblePop:9833,eligiblePopMethod:"Prevalence-based, EU ApoE &#949;4 restriction applied (15% homozygote exclusion)",timeHorizon:5,uptakeY1:2,uptakeY3:5,uptakeY5:8,drugCostPerPatient:22000,diagnosticCost:1800,monitoringCostY1:9050,monitoringCostY2:7950,totalPerPatientY1:32850,totalPerPatientY2:29950,annualBudgetY1:6.5,annualBudgetY5:24.1,cumulativeBudget:75.9,budgetPct:0.05,drugCostShare:67,topSensParam:"Drug price",methodology:"ISPOR BIA Good Practice (Sullivan et al. 2014)",modelType:"Cost calculator",decision:"Under review",source:"&#350;en SE. PharmacoEconomics (submitted 2026)",sourceUrl:"https://doi.org/10.64898/2025.12.30.25343198",currency:"EUR",notes:"First Ireland-specific BIA for AD DMTs. Incorporates EU ApoE &#949;4 restriction, blood-based biomarker scenarios, and 2026 HSE budget (&#8364;29B). Base case uptake scenario shown."},
 {id:2,verification:"verified",drug:"Lecanemab",brand:"Leqembi",disease:"Alzheimer's Disease",therapeuticArea:"Neurology",country:"United States",agency:"CMS/Medicare",year:2023,perspective:"Medicare Payer",eligiblePop:null,eligiblePopMethod:"Prevalence-based from 2018 Health and Retirement Study; MCI or mild dementia, aged 65+. Range: 85,687 (low) to 216,536 (high)",timeHorizon:1,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:25851,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:33181,totalPerPatientY2:null,annualBudgetY1:2000,annualBudgetY5:5100,cumulativeBudget:null,budgetPct:null,drugCostShare:78,topSensParam:"Eligible population size",methodology:"Cross-sectional cost analysis using 2018 HRS data",modelType:"Cost analysis (annual snapshot)",decision:"Coverage with Evidence Development",source:"Arbanas JC et al. JAMA Intern Med. 2023;183(8):885-887",sourceUrl:"https://doi.org/10.1001/jamainternmed.2023.1749",currency:"USD",notes:"Annual cost analysis, not a multi-year BIA model. Drug cost $25,851/yr (weight-based). Ancillary costs $7,330/pt (28% of total). Range: $2.0B (85,687 pts) to $5.1B (216,536 pts). Coinsurance ~$6,636/yr per patient."},
-{id:3,verification:"partial",drug:"Ranibizumab Biosimilar",brand:"Various",disease:"nAMD / DME / RVO",therapeuticArea:"Ophthalmology",country:"Jordan",agency:"GPD",year:2026,perspective:"Jordanian GPD (public payer)",eligiblePop:null,eligiblePopMethod:"National consumption data (2021â2024) from GPD, adjusted by utilisation rates",timeHorizon:4,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:null,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:null,totalPerPatientY2:null,annualBudgetY1:null,annualBudgetY5:null,cumulativeBudget:null,budgetPct:null,drugCostShare:100,topSensParam:"Uptake rates, price, market share",methodology:"ISPOR BIA framework, static model",modelType:"Cost calculator (Excel)",decision:"Published (Frontiers in Public Health)",source:"medRxiv â Frontiers in Public Health 2026",sourceUrl:"https://doi.org/10.3389/fpubh.2026.1800784",currency:"JOD",notes:"Biosimilar introduction to Jordanian joint procurement. Total budget impact range: 6.9Mâ21.2M JOD across PRN and T&E regimens. Drug acquisition costs only. Per-patient savings: 20.55â1,519.93 JOD. Patient access improvement: 2.75%â124.76%."},
-{id:4,verification:"verified",drug:"CAR T-cell (axi-cel/tisa-cel)",brand:"Yescarta/Kymriah",disease:"r/r DLBCL",therapeuticArea:"Oncology",country:"Germany",agency:"GKV",year:2022,perspective:"German third-party payer",eligiblePop:null,eligiblePopMethod:"Top-down: population forecasts + age-standardised incidences. Range: 788â867 (min) to 1,068â1,177 (max) 3L r/r DLBCL patients annually",timeHorizon:6,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:null,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:null,totalPerPatientY2:null,annualBudgetY1:39.4,annualBudgetY5:122.1,cumulativeBudget:null,budgetPct:null,drugCostShare:null,topSensParam:"Eligible population size, drug acquisition cost",methodology:"ISPOR BIA framework, 6-year model",modelType:"Partitioned survival + cost calculator",decision:"Published (HemaSphere)",source:"Skalt D et al. HemaSphere. 2022;6(7):e736",sourceUrl:"https://doi.org/10.1097/HS9.0000000000000736",currency:"EUR",notes:"CAR T-cell therapy BIA for 3L r/r DLBCL. Budget impact Y0: â¬39.4Mââ¬53.4M; Y5: â¬122.1Mââ¬165.8M (minâmax pop). List prices: â¬307,200ââ¬350,000/patient. Additional pre/post-treatment costs ~â¬50,359/patient. Scenario for 2L patients: Y0 â¬66.0Mââ¬89.6M; Y5 â¬204.5Mââ¬277.6M."}
+{id:3,verification:"partial",drug:"Ranibizumab Biosimilar",brand:"Various",disease:"nAMD / DME / RVO",therapeuticArea:"Ophthalmology",country:"Jordan",agency:"GPD",year:2026,perspective:"Jordanian GPD (public payer)",eligiblePop:null,eligiblePopMethod:"National consumption data (2021&#8211;2024) from GPD, adjusted by utilisation rates",timeHorizon:4,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:null,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:null,totalPerPatientY2:null,annualBudgetY1:null,annualBudgetY5:null,cumulativeBudget:null,budgetPct:null,drugCostShare:100,topSensParam:"Uptake rates, price, market share",methodology:"ISPOR BIA framework, static model",modelType:"Cost calculator (Excel)",decision:"Published (Frontiers in Public Health)",source:"medRxiv &#8594; Frontiers in Public Health 2026",sourceUrl:"https://doi.org/10.3389/fpubh.2026.1800784",currency:"JOD",notes:"Biosimilar introduction to Jordanian joint procurement. Total budget impact range: 6.9M&#8211;21.2M JOD across PRN and T&E regimens. Drug acquisition costs only. Per-patient savings: 20.55&#8211;1,519.93 JOD. Patient access improvement: 2.75%&#8211;124.76%."},
+{id:4,verification:"verified",drug:"CAR T-cell (axi-cel/tisa-cel)",brand:"Yescarta/Kymriah",disease:"r/r DLBCL",therapeuticArea:"Oncology",country:"Germany",agency:"GKV",year:2022,perspective:"German third-party payer",eligiblePop:null,eligiblePopMethod:"Top-down: population forecasts + age-standardised incidences. Range: 788&#8211;867 (min) to 1,068&#8211;1,177 (max) 3L r/r DLBCL patients annually",timeHorizon:6,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:null,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:null,totalPerPatientY2:null,annualBudgetY1:39.4,annualBudgetY5:122.1,cumulativeBudget:null,budgetPct:null,drugCostShare:null,topSensParam:"Eligible population size, drug acquisition cost",methodology:"ISPOR BIA framework, 6-year model",modelType:"Partitioned survival + cost calculator",decision:"Published (HemaSphere)",source:"Skalt D et al. HemaSphere. 2022;6(7):e736",sourceUrl:"https://doi.org/10.1097/HS9.0000000000000736",currency:"EUR",notes:"CAR T-cell therapy BIA for 3L r/r DLBCL. Budget impact Y0: &#8364;39.4M&#8211;&#8364;53.4M; Y5: &#8364;122.1M&#8211;&#8364;165.8M (min&#8211;max pop). List prices: &#8364;307,200&#8211;&#8364;350,000/patient. Additional pre/post-treatment costs ~&#8364;50,359/patient. Scenario for 2L patients: Y0 &#8364;66.0M&#8211;&#8364;89.6M; Y5 &#8364;204.5M&#8211;&#8364;277.6M."}
 
 ];
 
-const AGENCIES={"NCPE":{full:"National Centre for Pharmacoeconomics",flag:"ð®ðª"},"CMS/Medicare":{full:"Centers for Medicare & Medicaid Services",flag:"ðºð¸"},"GPD":{full:"General Procurement Department",flag:"ð¯ð´"}};
+const AGENCIES={"NCPE":{full:"National Centre for Pharmacoeconomics",flag:"IE"},"CMS/Medicare":{full:"Centers for Medicare & Medicaid Services",flag:"US"},"GPD":{full:"General Procurement Department",flag:"JO"}};
 
-function fmt(v,c){if(v==null)return"â";const s={EUR:"â¬",USD:"$",JOD:"JOD ",CAD:"C$"};const p=s[c]||c+" ";return v>=1000?p+(v/1000).toFixed(1)+"B":p+v.toFixed(1)+"M"}
+function fmt(v,c){if(v==null)return"&#8212;";const s={EUR:"&#8364;",USD:"$",JOD:"JOD ",CAD:"C$"};const p=s[c]||c+" ";return v>=1000?p+(v/1000).toFixed(1)+"B":p+v.toFixed(1)+"M"}
 
 let filterArea="All",filterCountry="All";
 
@@ -171,15 +171,15 @@ function render(){
   
   grid.innerHTML=filtered.map(b=>{
     const ag=AGENCIES[b.agency]||{flag:"",full:b.agency};
-    const budgetDisplay=b.cumulativeBudget?fmt(b.cumulativeBudget,b.currency):b.annualBudgetY1?fmt(b.annualBudgetY1,b.currency)+"â"+fmt(b.annualBudgetY5||b.annualBudgetY1,b.currency):"See notes";
+    const budgetDisplay=b.cumulativeBudget?fmt(b.cumulativeBudget,b.currency):b.annualBudgetY1?fmt(b.annualBudgetY1,b.currency)+"&#8211;"+fmt(b.annualBudgetY5||b.annualBudgetY1,b.currency):"See notes";
     const budgetLabel=b.cumulativeBudget?"Cumulative":"Annual range";
     const popDisplay=b.eligiblePop?b.eligiblePop.toLocaleString():"Range";
     const decClass=b.decision.includes("Approved")||b.decision.includes("Published")?"badge-approved":b.decision.includes("Under")?"badge-review":"badge-published";
-    const verBadge=b.verification==="verified"?'<span class="badge-verified">â Verified</span>':'<span class="badge-partial">Partial</span>';
+    const verBadge=b.verification==="verified"?'<span class="badge-verified">&#10003; Verified</span>':'<span class="badge-partial">Partial</span>';
     
     return`<div class="card" onclick="showDetail(${b.id})">
       <div class="card-header">
-        <div><div style="display:flex;align-items:center">${b.drug}${verBadge}</div><div class="card-sub">${b.brand} Â· ${b.disease}</div></div>
+        <div><div style="display:flex;align-items:center">${b.drug}${verBadge}</div><div class="card-sub">${b.brand} &#183; ${b.disease}</div></div>
         <span class="badge ${decClass}">${b.decision}</span>
       </div>
       <div class="tags"><span class="tag">${ag.flag} ${b.agency}</span><span class="tag">${b.year}</span><span class="tag">${b.timeHorizon}yr horizon</span></div>
@@ -195,19 +195,19 @@ function render(){
 function showDetail(id){
   const b=DB.find(x=>x.id===id);if(!b)return;
   const ag=AGENCIES[b.agency]||{flag:"",full:b.agency};
-  const verText=b.verification==="verified"?'<span class="badge-verified" style="margin-left:8px">â All parameters verified from source</span>':'<span class="badge-partial" style="margin-left:8px">Partial â some fields unavailable from source</span>';
+  const verText=b.verification==="verified"?'<span class="badge-verified" style="margin-left:8px">&#10003; All parameters verified from source</span>':'<span class="badge-partial" style="margin-left:8px">Partial &#8212; some fields unavailable from source</span>';
   
-  function row(l,v){const na=!v||v==="â"||v==="Not available";return`<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-value${na?" na":""}">${v||"Not available"}</span></div>`;}
+  function row(l,v){const na=!v||v==="&#8212;"||v==="Not available";return`<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-value${na?" na":""}">${v||"Not available"}</span></div>`;}
   function fmtC(v,c){return v!=null?c+" "+v.toLocaleString():"Not available";}
   
   document.getElementById("modal-content").innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px">
       <div>
         <div style="font-size:22px;font-weight:700">${b.drug}</div>
-        <div style="font-size:14px;color:var(--text-muted)">${b.brand} Â· ${b.disease}</div>
+        <div style="font-size:14px;color:var(--text-muted)">${b.brand} &#183; ${b.disease}</div>
         <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">${ag.flag} ${ag.full}${verText}</div>
       </div>
-      <button class="modal-close" onclick="closeModal()">â</button>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
     </div>
     <div class="modal-section">Population & Uptake</div>
     ${row("Eligible population",b.eligiblePop?b.eligiblePop.toLocaleString():null)}
@@ -236,7 +236,7 @@ function showDetail(id){
     ${row("Top sensitivity parameter",b.topSensParam)}
     ${row("Decision",b.decision)}
     ${b.notes?`<div class="modal-note">${b.notes}</div>`:""}
-    <div class="modal-source">Source: ${b.source}${b.sourceUrl?` Â· <a href="${b.sourceUrl}" target="_blank" rel="noopener">View source â</a>`:""}</div>
+    <div class="modal-source">Source: ${b.source}${b.sourceUrl?` &#183; <a href="${b.sourceUrl}" target="_blank" rel="noopener">View source &#8594;</a>`:""}</div>
   `;
   document.getElementById("modal-overlay").classList.remove("hidden");
 }
