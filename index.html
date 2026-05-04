@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIA Atlas â Global Budget Impact Analysis Observatory</title>
+<meta name="description" content="Explore, compare, and benchmark budget impact analyses across HTA agencies worldwide. Open data for transparent decision-making.">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#0066FF;--accent-bg:#0066FF15;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--bg:#f8fafc;--card-bg:#fff;--border:#e2e8f0;--tag-bg:#f1f5f9}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh}
+.header{border-bottom:1px solid var(--border);background:#fff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo-box{display:flex;align-items:center;gap:12px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;font-family:'DM Mono',monospace}
+.logo-title{font-size:16px;font-weight:700;letter-spacing:-0.3px}
+.logo-sub{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+nav a{color:var(--text-secondary);text-decoration:none;font-size:13px;margin-left:24px}
+nav a.active{color:var(--accent);font-weight:600}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+.hero{text-align:center;margin-bottom:48px}
+.hero h1{font-size:42px;font-weight:700;letter-spacing:-1.5px;font-family:'Instrument Serif',serif;line-height:1.1}
+.hero p{font-size:16px;color:var(--text-secondary);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto}
+.stats{display:flex;justify-content:center;gap:32px;margin-top:24px;flex-wrap:wrap}
+.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px 24px;flex:1 1 180px;min-width:160px}
+.stat-val{font-size:32px;font-weight:700;color:var(--accent);font-family:'DM Mono',monospace;letter-spacing:-1px}
+.stat-label{font-size:13px;color:var(--text-secondary);margin-top:4px;font-weight:500}
+.stat-sub{font-size:11px;color:var(--text-muted);margin-top:2px}
+.search-input{width:100%;padding:14px 20px;border-radius:12px;border:1px solid var(--border);font-size:14px;outline:none;background:#fff;font-family:inherit}
+.search-input:focus{border-color:var(--accent)}
+.filters{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.filter-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-right:4px}
+.pill{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-family:inherit}
+.pill.active{border:1.5px solid var(--accent);background:var(--accent-bg);color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.2s;position:relative}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-drug{font-size:16px;font-weight:700}
+.card-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;display:inline-block}
+.badge-review{background:#f59e0b20;color:#f59e0b}
+.badge-approved{background:#10b98120;color:#10b981}
+.badge-published{background:#6366f120;color:#6366f1}
+.badge-verified{background:#10b98120;color:#10b981;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:2px 6px;border-radius:4px;margin-left:6px}
+.badge-partial{background:#f59e0b20;color:#f59e0b;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:2px 6px;border-radius:4px;margin-left:6px}
+.tags{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tag{font-size:11px;background:var(--tag-bg);color:var(--text-secondary);padding:2px 8px;border-radius:6px}
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.card-stat-val{font-size:18px;font-weight:700;font-family:'DM Mono',monospace}
+.card-stat-val.accent{color:var(--accent)}
+.card-stat-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.modal{background:var(--card-bg);border-radius:16px;padding:32px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;border:1px solid var(--border)}
+.modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-muted)}
+.modal-section{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:8px;margin-top:20px}
+.modal-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.modal-row-label{font-size:13px;color:var(--text-secondary)}
+.modal-row-value{font-size:13px;font-weight:600;text-align:right;max-width:60%}
+.modal-row-value.na{color:var(--text-muted)}
+.modal-note{margin-top:16px;padding:12px;background:var(--tag-bg);border-radius:8px;font-size:12px;color:var(--text-secondary);line-height:1.5}
+.modal-source{margin-top:16px;font-size:11px;color:var(--text-muted)}
+.modal-source a{color:var(--accent)}
+.cta{margin-top:48px;text-align:center;padding:40px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px}
+.cta h2{font-size:22px;font-weight:700;font-family:'Instrument Serif',serif;letter-spacing:-0.5px}
+.cta p{font-size:14px;color:var(--text-secondary);margin-top:8px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btn{margin-top:16px;padding:12px 32px;border-radius:10px;background:var(--accent);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:-0.2px;font-family:inherit}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-muted);padding-bottom:32px}
+footer div+div{margin-top:4px;font-size:11px}
+.results-meta{display:flex;justify-content:space-between;align-items:center;margin-top:24px;margin-bottom:8px;font-size:13px;color:var(--text-muted)}
+.empty{text-align:center;padding:60px;color:var(--text-muted)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.empty-title{font-size:16px;font-weight:600}
+.hidden{display:none}
+@media(max-width:768px){.hero h1{font-size:28px}.stats{gap:12px}.grid{grid-template-columns:1fr}.header{padding:12px 16px;flex-direction:column;gap:8px}nav{display:flex;gap:16px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-box">
+    <div class="logo-icon">B</div>
+    <div>
+      <div class="logo-title">BIA Atlas</div>
+      <div class="logo-sub">Global Budget Impact Observatory</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#" class="active">Explore</a>
+    <a href="#contribute">Contribute</a>
+    <a href="https://github.com/sevincelifalkan-coder/bia-atlas" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:middle;margin-right:4px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </nav>
+</header>
+
+<div class="container">
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Budget Impact Analyses,<br>structured and searchable</h1>
+    <p>Explore, compare, and benchmark budget impact parameters across HTA agencies worldwide. Open data for transparent decision-making. Every entry verified from source documents.</p>
+    <div class="stats">
+      <div class="stat-card"><div class="stat-val" id="stat-entries">3</div><div class="stat-label">BIA entries</div><div class="stat-sub">and growing</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-drugs">2</div><div class="stat-label">Drugs</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-countries">3</div><div class="stat-label">Countries</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-agencies">3</div><div class="stat-label">HTA agencies</div></div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <input type="text" class="search-input" id="search" placeholder="Search by drug, disease, country, or agency...">
+  <div class="filters" id="filters"></div>
+
+  <!-- RESULTS -->
+  <div class="results-meta"><span id="result-count"></span><span>Click to view details</span></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty hidden" id="empty"><div class="empty-icon">ð</div><div class="empty-title">No BIAs found</div><div style="font-size:13px;margin-top:8px">Try adjusting your search or filters</div></div>
+
+  <!-- CTA -->
+  <div class="cta" id="contribute">
+    <h2>Contribute a BIA</h2>
+    <p>Have a published or submitted budget impact analysis? Add it to the Atlas via GitHub and help build the world's most comprehensive BIA database.</p>
+    <a href="https://github.com/sevincelifalkan-coder/bia-atlas" target="_blank"><button class="cta-btn">Contribute on GitHub â</button></a>
+  </div>
+
+  <footer>
+    <div>BIA Atlas Â· Built by SevinÃ§ Elif Åen Â· Open data for transparent HTA decision-making</div>
+    <div>Data sourced from published HTA reports, academic publications, and preprints Â· CC BY 4.0</div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+// ============================================================
+// BIA ATLAS DATA â VERIFIED ENTRIES ONLY
+// ============================================================
+const DB=[
+{id:1,verification:"verified",drug:"Lecanemab",brand:"Leqembi",disease:"Alzheimer's Disease",therapeuticArea:"Neurology",country:"Ireland",agency:"NCPE",year:2026,perspective:"HSE Payer",eligiblePop:9833,eligiblePopMethod:"Prevalence-based, EU ApoE Îµ4 restriction applied (15% homozygote exclusion)",timeHorizon:5,uptakeY1:2,uptakeY3:5,uptakeY5:8,drugCostPerPatient:22000,diagnosticCost:1800,monitoringCostY1:9050,monitoringCostY2:7950,totalPerPatientY1:32850,totalPerPatientY2:29950,annualBudgetY1:6.5,annualBudgetY5:24.1,cumulativeBudget:75.9,budgetPct:0.05,drugCostShare:67,topSensParam:"Drug price",methodology:"ISPOR BIA Good Practice (Sullivan et al. 2014)",modelType:"Cost calculator",decision:"Under review",source:"Åen SE. PharmacoEconomics (submitted 2026)",sourceUrl:"https://doi.org/10.64898/2025.12.30.25343198",currency:"EUR",notes:"First Ireland-specific BIA for AD DMTs. Incorporates EU ApoE Îµ4 restriction, blood-based biomarker scenarios, and 2026 HSE budget (â¬29B). Base case uptake scenario shown."},
+{id:2,verification:"verified",drug:"Lecanemab",brand:"Leqembi",disease:"Alzheimer's Disease",therapeuticArea:"Neurology",country:"United States",agency:"CMS/Medicare",year:2023,perspective:"Medicare Payer",eligiblePop:null,eligiblePopMethod:"Prevalence-based from 2018 Health and Retirement Study; MCI or mild dementia, aged 65+. Range: 85,687 (low) to 216,536 (high)",timeHorizon:1,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:25851,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:33181,totalPerPatientY2:null,annualBudgetY1:2000,annualBudgetY5:5100,cumulativeBudget:null,budgetPct:null,drugCostShare:78,topSensParam:"Eligible population size",methodology:"Cross-sectional cost analysis using 2018 HRS data",modelType:"Cost analysis (annual snapshot)",decision:"Coverage with Evidence Development",source:"Arbanas JC et al. JAMA Intern Med. 2023;183(8):885-887",sourceUrl:"https://doi.org/10.1001/jamainternmed.2023.1749",currency:"USD",notes:"Annual cost analysis, not a multi-year BIA model. Drug cost $25,851/yr (weight-based). Ancillary costs $7,330/pt (28% of total). Range: $2.0B (85,687 pts) to $5.1B (216,536 pts). Coinsurance ~$6,636/yr per patient."},
+{id:3,verification:"partial",drug:"Ranibizumab Biosimilar",brand:"Various",disease:"nAMD / DME / RVO",therapeuticArea:"Ophthalmology",country:"Jordan",agency:"GPD",year:2026,perspective:"Jordanian GPD (public payer)",eligiblePop:null,eligiblePopMethod:"National consumption data (2021â2024) from GPD, adjusted by utilisation rates",timeHorizon:4,uptakeY1:null,uptakeY3:null,uptakeY5:null,drugCostPerPatient:null,diagnosticCost:null,monitoringCostY1:null,monitoringCostY2:null,totalPerPatientY1:null,totalPerPatientY2:null,annualBudgetY1:null,annualBudgetY5:null,cumulativeBudget:null,budgetPct:null,drugCostShare:100,topSensParam:"Uptake rates, price, market share",methodology:"ISPOR BIA framework, static model",modelType:"Cost calculator (Excel)",decision:"Published (Frontiers in Public Health)",source:"medRxiv â Frontiers in Public Health 2026",sourceUrl:"https://doi.org/10.3389/fpubh.2026.1800784",currency:"JOD",notes:"Biosimilar introduction to Jordanian joint procurement. Total budget impact range: 6.9Mâ21.2M JOD across PRN and T&E regimens. Drug acquisition costs only. Per-patient savings: 20.55â1,519.93 JOD. Patient access improvement: 2.75%â124.76%."}
+];
+
+const AGENCIES={"NCPE":{full:"National Centre for Pharmacoeconomics",flag:"ð®ðª"},"CMS/Medicare":{full:"Centers for Medicare & Medicaid Services",flag:"ðºð¸"},"GPD":{full:"General Procurement Department",flag:"ð¯ð´"}};
+
+function fmt(v,c){if(v==null)return"â";const s={EUR:"â¬",USD:"$",JOD:"JOD ",CAD:"C$"};const p=s[c]||c+" ";return v>=1000?p+(v/1000).toFixed(1)+"B":p+v.toFixed(1)+"M"}
+
+let filterArea="All",filterCountry="All";
+
+function render(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const filtered=DB.filter(b=>{
+    const ms=!q||b.drug.toLowerCase().includes(q)||b.disease.toLowerCase().includes(q)||b.country.toLowerCase().includes(q)||b.agency.toLowerCase().includes(q);
+    const ma=filterArea==="All"||b.therapeuticArea===filterArea;
+    const mc=filterCountry==="All"||b.country===filterCountry;
+    return ms&&ma&&mc;
+  });
+  
+  document.getElementById("result-count").textContent=filtered.length+" results";
+  const grid=document.getElementById("grid");
+  const empty=document.getElementById("empty");
+  
+  if(filtered.length===0){grid.innerHTML="";empty.classList.remove("hidden");return;}
+  empty.classList.add("hidden");
+  
+  grid.innerHTML=filtered.map(b=>{
+    const ag=AGENCIES[b.agency]||{flag:"",full:b.agency};
+    const budgetDisplay=b.cumulativeBudget?fmt(b.cumulativeBudget,b.currency):b.annualBudgetY1?fmt(b.annualBudgetY1,b.currency)+"â"+fmt(b.annualBudgetY5||b.annualBudgetY1,b.currency):"See notes";
+    const budgetLabel=b.cumulativeBudget?"Cumulative":"Annual range";
+    const popDisplay=b.eligiblePop?b.eligiblePop.toLocaleString():"Range";
+    const decClass=b.decision.includes("Approved")||b.decision.includes("Published")?"badge-approved":b.decision.includes("Under")?"badge-review":"badge-published";
+    const verBadge=b.verification==="verified"?'<span class="badge-verified">â Verified</span>':'<span class="badge-partial">Partial</span>';
+    
+    return`<div class="card" onclick="showDetail(${b.id})">
+      <div class="card-header">
+        <div><div style="display:flex;align-items:center">${b.drug}${verBadge}</div><div class="card-sub">${b.brand} Â· ${b.disease}</div></div>
+        <span class="badge ${decClass}">${b.decision}</span>
+      </div>
+      <div class="tags"><span class="tag">${ag.flag} ${b.agency}</span><span class="tag">${b.year}</span><span class="tag">${b.timeHorizon}yr horizon</span></div>
+      <div class="card-stats">
+        <div><div class="card-stat-val accent">${budgetDisplay}</div><div class="card-stat-label">${budgetLabel}</div></div>
+        <div><div class="card-stat-val">${popDisplay}</div><div class="card-stat-label">Eligible pop.</div></div>
+        <div><div class="card-stat-val">${b.drugCostShare}%</div><div class="card-stat-label">Drug cost share</div></div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function showDetail(id){
+  const b=DB.find(x=>x.id===id);if(!b)return;
+  const ag=AGENCIES[b.agency]||{flag:"",full:b.agency};
+  const verText=b.verification==="verified"?'<span class="badge-verified" style="margin-left:8px">â All parameters verified from source</span>':'<span class="badge-partial" style="margin-left:8px">Partial â some fields unavailable from source</span>';
+  
+  function row(l,v){const na=!v||v==="â"||v==="Not available";return`<div class="modal-row"><span class="modal-row-label">${l}</span><span class="modal-row-value${na?" na":""}">${v||"Not available"}</span></div>`;}
+  function fmtC(v,c){return v!=null?c+" "+v.toLocaleString():"Not available";}
+  
+  document.getElementById("modal-content").innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px">
+      <div>
+        <div style="font-size:22px;font-weight:700">${b.drug}</div>
+        <div style="font-size:14px;color:var(--text-muted)">${b.brand} Â· ${b.disease}</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">${ag.flag} ${ag.full}${verText}</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">â</button>
+    </div>
+    <div class="modal-section">Population & Uptake</div>
+    ${row("Eligible population",b.eligiblePop?b.eligiblePop.toLocaleString():null)}
+    ${row("Population method",b.eligiblePopMethod)}
+    ${row("Uptake Year 1",b.uptakeY1!=null?b.uptakeY1+"%":null)}
+    ${row("Uptake Year 3",b.uptakeY3!=null?b.uptakeY3+"%":null)}
+    ${row("Uptake Year 5",b.uptakeY5!=null?b.uptakeY5+"%":null)}
+    <div class="modal-section">Costs Per Patient</div>
+    ${row("Drug cost/patient/year",fmtC(b.drugCostPerPatient,b.currency))}
+    ${row("Diagnostic cost (one-time)",fmtC(b.diagnosticCost,b.currency))}
+    ${row("Monitoring Year 1",fmtC(b.monitoringCostY1,b.currency))}
+    ${row("Monitoring Year 2+",fmtC(b.monitoringCostY2,b.currency))}
+    ${row("Total per-patient Year 1",fmtC(b.totalPerPatientY1,b.currency))}
+    ${row("Total per-patient Year 2+",fmtC(b.totalPerPatientY2,b.currency))}
+    <div class="modal-section">Budget Impact</div>
+    ${row("Annual impact Year 1",b.annualBudgetY1!=null?fmt(b.annualBudgetY1,b.currency):null)}
+    ${row("Annual impact Year 5",b.annualBudgetY5!=null?fmt(b.annualBudgetY5,b.currency):null)}
+    ${row("Cumulative budget impact",b.cumulativeBudget!=null?fmt(b.cumulativeBudget,b.currency):null)}
+    ${row("% of total health budget",b.budgetPct!=null?b.budgetPct+"%":null)}
+    ${row("Drug cost share",b.drugCostShare+"%")}
+    <div class="modal-section">Methodology</div>
+    ${row("Time horizon",b.timeHorizon+" years")}
+    ${row("Perspective",b.perspective)}
+    ${row("Model type",b.modelType)}
+    ${row("Methodology",b.methodology)}
+    ${row("Top sensitivity parameter",b.topSensParam)}
+    ${row("Decision",b.decision)}
+    ${b.notes?`<div class="modal-note">${b.notes}</div>`:""}
+    <div class="modal-source">Source: ${b.source}${b.sourceUrl?` Â· <a href="${b.sourceUrl}" target="_blank" rel="noopener">View source â</a>`:""}</div>
+  `;
+  document.getElementById("modal-overlay").classList.remove("hidden");
+}
+
+function closeModal(){document.getElementById("modal-overlay").classList.add("hidden");}
+document.getElementById("modal-overlay").addEventListener("click",e=>{if(e.target===e.currentTarget)closeModal();});
+
+// Build filters
+const areas=[...new Set(DB.map(b=>b.therapeuticArea))];
+const countries=[...new Set(DB.map(b=>b.country))];
+const filtersEl=document.getElementById("filters");
+let html='<span class="filter-label">Area:</span>';
+html+='<button class="pill active" onclick="setFilter(\'area\',\'All\',this)">All</button>';
+areas.forEach(a=>html+=`<button class="pill" onclick="setFilter('area','${a}',this)">${a}</button>`);
+html+='<span class="filter-label" style="margin-left:12px">Country:</span>';
+html+='<button class="pill active" onclick="setFilter(\'country\',\'All\',this)">All</button>';
+countries.forEach(c=>html+=`<button class="pill" onclick="setFilter('country','${c}',this)">${c}</button>`);
+filtersEl.innerHTML=html;
+
+function setFilter(type,val,el){
+  if(type==="area")filterArea=val;else filterCountry=val;
+  const pills=el.parentElement.querySelectorAll(".pill");
+  const start=type==="area"?1:areas.length+2;
+  const end=type==="area"?areas.length+1:pills.length;
+  for(let i=start;i<=end&&i<pills.length;i++)pills[i].classList.remove("active");
+  el.classList.add("active");
+  render();
+}
+
+document.getElementById("search").addEventListener("input",render);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+render();
+</script>
+</body>
+</html>
