@@ -96,9 +96,6 @@ All data is extracted from:
 
 Every entry includes a source citation and URL. Parameters marked as "Not available" when not reported in the source document.
 
-## Inspiration
-
-Inspired by Paul Schneider's NICE Appraisals knowledge graph (https://shoulders.dev), which structured 826 NICE Technology Appraisals into a searchable database. BIA Atlas applies this open-data transparency approach to budget impact analyses across multiple HTA agencies.
 
 ## Tech stack
 
